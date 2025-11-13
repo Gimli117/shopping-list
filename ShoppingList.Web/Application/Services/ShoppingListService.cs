@@ -59,30 +59,21 @@ public class ShoppingListService : IShoppingListService
     public int ClearPurchased()
     {
         // TODO: Students - Implement this method
-        // 1. Count items where IsPurchased == true
-        // 2. Create logic to remove all purchased items from array
-        // 3. Shift remaining items and update _nextIndex
-        // 4. Return the count of removed items
+        // Return the count of removed items
         return 0;
     }
 
     public bool TogglePurchased(string id)
     {
         // TODO: Students - Implement this method
-        // 1. Find item by id
-        // 2. Toggle IsPurchased property
-        // 3. Return true if successful, false if item not found
+        // Return true if successful, false if item not found
         return false;
     }
 
     public bool Reorder(IReadOnlyList<string> orderedIds)
     {
         // TODO: Students - Implement this method
-        // 1. Validate that orderedIds is not null or empty
-        // 2. Validate that all ids in orderedIds exist in the array
-        // 3. Validate that orderedIds contains all current items (no missing or duplicate ids)
-        // 4. Reorder items in the array according to orderedIds
-        // 5. Return true if successful, false otherwise
+        // Return true if successful, false otherwise
         return false;
     }
 
