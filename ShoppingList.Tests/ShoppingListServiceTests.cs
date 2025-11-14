@@ -112,8 +112,10 @@ public class ShoppingListServiceTests
     //     Assert.Equal("Milk", item!.Name);
     //     Assert.Equal(2, item.Quantity);
     // }
-
-            var items = new ShoppingItem[5];
+        public ShoppingItem[] GetTestItems()  
+        {
+    
+        var items = new ShoppingItem[5];
 
         items[0] = new ShoppingItem
         {
