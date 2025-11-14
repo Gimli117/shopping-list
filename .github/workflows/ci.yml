@@ -1,38 +1,41 @@
 ﻿name: ci.yml
 
 on:
+  workflow_dispatch:
+  
   push:
     branches:
       - main
-      
-    workflow_dispatch:
-      
-    pull_request:
-      branches:
-        - main
+
+  pull_request:
+    branches:
+      - main
   
-  jobs:
-    build:
-      name: Build and test
-      runs-on: ${{ matrix.os }}
-      strategy:
-        matrix:
-          os: [ubuntu-latest, windows-latest]
-          version: [8.0, 9.0]
+jobs:
+  build:
+    name: Build and test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        dotnet-version: ['9.0.x', '8.0.x']
       
-      steps:
-        - name: Print runtime context
-          run: |
-            echo "Runner OS: ${{ runner.os }}"
-            echo "Run Number: ${{ github.run_number }}"
-          
-        - name: checkout
-          uses: actions/checkout@v2
+    steps:
+      - name: Print runtime context
+        run: |
+          echo "Runner OS: ${{ runner.os }}"
+          echo "Run Number: ${{ github.run_number }}"
+    
+      - name: checkout
+        uses: actions/checkout@v4
 
-        - name: install SDK
-          uses: actions/setup-dotnet@v1
-          with:
-            dotnet-version: ${{ matrix.version }}
+      - name: install SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
 
-        - name: build
-          run: dotnet build
+      - name: restore nuget
+        run: dotnet restore
+
+      - name: build
+        run: dotnet build
