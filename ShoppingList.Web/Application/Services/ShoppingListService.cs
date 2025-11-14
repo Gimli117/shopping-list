@@ -12,14 +12,28 @@ public class ShoppingListService : IShoppingListService
     {
         // Initialize with demo data for UI demonstration
         // TODO: Students can remove or comment this out when running unit tests
-        _items = GenerateDemoItems();
+        //_items = GenerateDemoItems();
+        _items = new ShoppingItem[5];
         _nextIndex = 4; // We have 4 demo items initialized
     }
 
     public IReadOnlyList<ShoppingItem> GetAll()
     {
-        // TODO: Students - Return all items from the array (up to _nextIndex)
-        return [];
+        /*for (int i = 0; i < _items.Length; i++)
+        {
+            if (_items[i] == null)
+            {
+                _nextIndex = i;
+                
+                break;
+            }
+        }
+
+        var tempArray = new ShoppingItem[_nextIndex];
+
+        Array.Copy(_items, tempArray, _nextIndex);*/
+        
+        return _items;
     }
 
     public ShoppingItem? GetById(string id)

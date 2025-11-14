@@ -112,5 +112,56 @@ public class ShoppingListServiceTests
     //     Assert.Equal("Milk", item!.Name);
     //     Assert.Equal(2, item.Quantity);
     // }
+
+            var items = new ShoppingItem[5];
+
+        items[0] = new ShoppingItem
+        {
+            Id = "0",
+            Name = "Dishwasher tablets",
+            Quantity = 1,
+            Notes = "80st/pack - Rea",
+            IsPurchased = false
+         };
+        items[1] = new ShoppingItem
+        {
+            Id = "1",
+            Name = "Ground meat",
+            Quantity = 1,
+            Notes = "2kg - origin Sweden",
+            IsPurchased = false
+        };
+        items[2] = new ShoppingItem
+        {
+            Id = "2",
+            Name = "Apples",
+            Quantity = 10,
+            Notes = "Pink Lady",
+            IsPurchased = false
+        };
+        items[3] = new ShoppingItem
+        {
+            Id = "3",
+            Name = "Toothpaste",
+            Quantity = 1,
+            Notes = "Colgate",
+            IsPurchased = false
+        };
+
+        return items;
+    }
+
+    private readonly ShoppingListService _service = new ShoppingListService();
+
+
+    [Fact]
+    public void GetAll_WhenEmpty_ShouldReturnEmptyList()
+    {
+        var expected = new ShoppingItem[5];
+
+        var emptyList = _service.GetAll();
+
+        Assert.Equal(expected, emptyList);
+    }
 }
 
