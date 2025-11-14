@@ -42,4 +42,4 @@ jobs:
 
       - name: run tests
         if: ${{ success() }}
-        run: dotnet run --no build --verbosity normal
+        run: dotnet test
