@@ -21,6 +21,11 @@ jobs:
         dotnet-version: ['9.0.x', '8.0.x']
       
     steps:
+      - name: Print runtime context
+        run: |
+          echo "Runner OS: ${{ runner.os }}"
+          echo "Run Number: ${{ github.run_number }}"
+    
       - name: checkout
         uses: actions/checkout@v4
 
